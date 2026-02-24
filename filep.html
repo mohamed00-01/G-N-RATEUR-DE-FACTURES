@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>FacturePro 2025</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+<div class="container">
+
+    <header>
+        <h1>FacturePro</h1>
+        <p id="date"></p>
+        <p>Facture N° <span id="invoiceNumber"></span></p>
+    </header>
+
+    <section class="client-section">
+        <h2>Informations Client</h2>
+        <input type="text" id="clientName" placeholder="Nom du client">
+        <input type="email" id="clientEmail" placeholder="Email du client">
+    </section>
+
+    <section class="product-section">
+        <h2>Ajouter Produit</h2>
+        <input type="text" id="product" placeholder="Produit">
+        <input type="number" id="quantity" placeholder="Quantité">
+        <input type="number" id="price" placeholder="Prix Unitaire">
+        <button onclick="addProduct()">Ajouter</button>
+    </section>
+
+    <table id="productTable">
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Qté</th>
+                <th>PU</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <section class="totals">
+        <label>TVA (%)</label>
+        <input type="number" id="tvaRate" value="20" onchange="updateTotals()">
+        <p>Total HT : <span id="totalHT">0</span> €</p>
+        <p>TVA : <span id="tva">0</span> €</p>
+        <p class="ttc">Total TTC : <span id="totalTTC">0</span> €</p>
+    </section>
+
+    <button class="pdf-btn" onclick="generatePDF()">Exporter en PDF</button>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
